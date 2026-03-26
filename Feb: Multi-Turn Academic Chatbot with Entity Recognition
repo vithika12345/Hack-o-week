@@ -1,0 +1,63 @@
+import re
+
+# Simple memory (conversation state)
+conversation_state = {
+    "semester": None,
+    "course": None
+}
+
+# Extract semester
+def extract_semester(text):
+    match = re.search(r'(sem|semester|year)\s*(\d+)', text, re.IGNORECASE)
+    if match:
+        return match.group(2)
+    return None
+
+# Extract course
+def extract_course(text):
+    match = re.findall(r'\b[A-Z]{2,4}\d{2,3}\b', text)
+    return match if match else None
+
+# Chatbot response
+def chatbot(query):
+    global conversation_state
+
+    # Extract entities
+    sem = extract_semester(query)
+    course = extract_course(query)
+
+    # Update memory
+    if sem:
+        conversation_state["semester"] = sem
+    if course:
+        conversation_state["course"] = course
+
+    # Generate response
+    response = ""
+
+    if "exam" in query.lower():
+        response = "Exam info: "
+
+    # Use memory if missing info
+    if conversation_state["semester"]:
+        response += f"Semester {conversation_state['semester']} "
+    if conversation_state["course"]:
+        response += f"Course {', '.join(conversation_state['course'])} "
+
+    if not response.strip():
+        response = "Please ask about exams, semester, or course."
+
+    return response.strip()
+
+
+# -------- RUN CHAT --------
+print("Simple Academic Chatbot (type 'exit' to stop)\n")
+
+while True:
+    user_input = input("You: ")
+
+    if user_input.lower() == "exit":
+        break
+
+    reply = chatbot(user_input)
+    print("Bot:", reply)
