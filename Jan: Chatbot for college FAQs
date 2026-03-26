@@ -1,0 +1,61 @@
+def chatbot_response(user_input):
+    user_input = user_input.lower()
+
+    if "timing" in user_input or "hours" in user_input:
+        return "Our institute is open from 9 AM to 6 PM, Monday to Saturday."
+
+    elif "fee" in user_input or "fees" in user_input or "cost" in user_input:
+        return "The course fee is INR 1,25,000 for each semester."
+
+    elif "contact" in user_input or "phone" in user_input:
+        return "You can reach us at +91 98233 56929 or email info@sitnagpur.siu.edu.in."
+
+    elif "location" in user_input or "address" in user_input:
+        return "We are located at Mouza - Wathoda, Nagpur - 440008, Maharashtra, India, India."
+
+    elif "courses" in user_input or "programs" in user_input:
+        return "We offer courses in Undergraduate Program in computer science and engineering and specialization courses in Artificial Intelligence and Data Science."
+
+    elif "admission" in user_input or "enroll" in user_input:
+        return "Admissions are open year-round. You can apply online via our website."
+
+    elif "duration" in user_input or "length" in user_input:
+        return "Most courses run for 4-5 years, with weekend reserved for specialization courses and weekday lectures From 9.00 am to 5.00 pm."
+
+    elif "certificate" in user_input or "certification" in user_input or "Degree" in user_input:
+        return "Yes, After Degree completion, Degree Convocation takes place at SIU and we provide an industry-recognized certificate upon successful completion of various internships and courses."
+
+    elif "faculty" in user_input or "teachers" in user_input:
+        return "Our faculty includes experienced professionals from industry and academia with a vast years of exeperience of core subjects ."
+
+    elif "placement" in user_input or "job" in user_input:
+        return "We provide placement assistance with top companies in IT and analytics, providing rewarding packages in top Companies."
+
+    elif "scholarship" in user_input or "discount" in user_input:
+        return "We offer merit-based scholarships and seasonal discounts. Please check our website [ link: https://sitnagpur.edu.in/]."
+
+    elif "library" in user_input or "resources" in user_input:
+        return "Our institute has a digital library as well as SIU library with 24/7 facalities for students and various lab facilities for students."
+
+    elif "holiday" in user_input or "vacation" in user_input:
+        return "We remain closed on national holidays and Sundays, whereas the institute follows a Yearly calender of SIU."
+
+    elif "website" in user_input or "online" in user_input:
+        return "Visit our official website at https://sitnagpur.edu.in/ for more details."
+       
+    elif "hostel" in user_input or "Mess" in user_input:
+        return "Hostel facility and mess facility is provided inside the campus. Please visit our website to know more."
+
+    else:
+        return "Please contact our office for this info. phone: +91 7126192370, or mobile: +91 98233 56929. Email us at info@sitnagpur.siu.edu.in.."
+
+
+# --- Chat Loop ---
+print("Welcome to Institute FAQ Chatbot! Ask us your queries and Type 'exit' to quit.")
+while True:
+    user_query = input("You: ")
+    if user_query.lower() == "exit":
+        print("Chatbot: Goodbye! Have a great day.")
+        break
+    response = chatbot_response(user_query)
+    print("Chatbot:", response)
