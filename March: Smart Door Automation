@@ -1,0 +1,36 @@
+#include <Servo.h>
+
+Servo myServo;
+
+const int pirPin = 2;
+const int ledPin = 7;
+
+void setup() {
+  pinMode(pirPin, INPUT);
+  pinMode(ledPin, OUTPUT);
+
+  myServo.attach(9);
+  myServo.write(0);
+
+  Serial.begin(9600);
+}
+
+void loop() {
+  int motionDetected = digitalRead(pirPin);
+
+  if (motionDetected == HIGH) {
+    Serial.println("Motion detected!");
+
+    digitalWrite(ledPin, HIGH); // LED ON
+    myServo.write(90);          // Door open
+
+    delay(3000);
+
+    myServo.write(0);           // Door close
+    digitalWrite(ledPin, LOW);  // LED OFF
+  }
+  else {
+    Serial.println("No Motion detected!");
+    digitalWrite(ledPin, LOW);
+  }
+}
