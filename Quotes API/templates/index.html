@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Quote Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <main class="card-stage">
+
+    <header class="drawer-label">
+      <span class="drawer-index" id="drawer-index">CARD 00 / 07</span>
+      <span class="drawer-title">Daily Quote Catalog</span>
+    </header>
+
+    <section class="index-card" id="index-card">
+      <div class="punch-hole"></div>
+
+      <p class="quote-text" id="quote-text">Loading a quote for you…</p>
+      <p class="quote-author" id="quote-author"></p>
+
+      <div class="stamp" id="stamp">N&deg; —</div>
+    </section>
+
+    <div class="controls">
+      <button class="btn btn-primary" id="new-quote-btn">Draw a New Card</button>
+      <button class="btn btn-secondary" id="browse-btn">Browse All</button>
+    </div>
+
+    <section class="catalog" id="catalog" hidden>
+      <ul class="catalog-list" id="catalog-list"></ul>
+    </section>
+
+    <p class="status-line" id="status-line"></p>
+
+  </main>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
